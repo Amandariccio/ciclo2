@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa Kitanda</title>
+    <link rel="stylesheet" href="ciclo2.css">
+</head>
+
+
+<body>
+
+   <div id="Lista de produtos">
+      <h2>Lista de produtos</h2>
+   </div><!--Lista de produtos-->
+
+   <div id="Sua cesta">
+      <h2>Sua cesta</h2>
+   </div><!--Sua cesta-->
+
+   <script>
+       const items  = [
+           {
+               id: 0,
+               nome: 'Mamão papaia',
+               quantidade: 0
+
+           },
+           {
+               id: 1;
+               nome: 'Laranja',
+               quantidade: 0
+           },
+           {
+               id: 2;
+               nome: 'Manga',
+               quantidade: 0
+           },
+           {
+               id: 3;
+               nome: 'Melão',
+               quantidade: 0
+           },
+           {
+               id: 4;
+               nome: 'Melancia',
+               quantidade: 0
+           },
+       ]
+
+
+       inicializarKitanda = () => {
+           var containerSuaCesta = document.getElementById('suaCesta');
+           items.map((val)=>{
+               containerSuaCesta.innerHTML+= `
+               
+         <div class ="produtos-single">
+                <p>`+val.nome+`</p>
+                <a key"`+val.id+`" href="#">Adicionar ao carrinho!<a/>
+
+         </div>
+
+         
+
+               `;
+           })
+       }
+
+       inicializarKitanda();
+
+       atualizarSuaCesta = () => {
+          console.log(items)
+       }
+
+        var links = document.getElementsByTagName('a');
+
+        for(var i = 0; i < links.length; i++){
+            links[i].addEventListener("click", function(){
+            let key = this.getAttribute('key');
+            items[key].quantidade++;
+            atualizarSuaCesta();
+            return false;
+        })
+    }
+   </script>
+    
+</body>
+</html>
